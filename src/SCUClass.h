@@ -1,13 +1,11 @@
 /*
-* Name: Alex Green
-* Email: aigreen@scu.edu
-* Student ID: 1643872
-* Contact: 9252854240
+* Name: Alex Green, Kieran Pazmino, Charlie Gray
+* Email: aigreen@scu.edu, kpazmino@scu.edu, cjgray@scu.edu
 *
 * Assignment: Create a container representing the students
-*             in a class via a linked list implementation
-*             that can add, remove, traverse, and print.
-* 5 of 6: SCUClass.h
+*             in a class via a vector that can add, remove,
+*             traverse, and print.
+* 3 of 4: SCUClass.h
 */
 
 #ifndef SCUCLASS_H_
@@ -18,15 +16,17 @@ namespace coen79
 	class SCUClass
 	{
 	private:
-		Node* students;
+		std::vector<Student> students;
 	public:
 		SCUClass(void);
-		virtual ~SCUClass(void);
 
 		int insert(const Student& student);
 		void remove(const Student& student);
-		void traverse(int (*process)(const int, Student&, void*), void* pointer);
 		void list(void) const;
+		std::vector<Student>::iterator begin(void);
+		std::vector<const Student>::iterator cbegin(void);
+		std::vector<Student>::iterator end(void);
+		std::vector<const Student>::iterator cend(void);
 	};
 }
 

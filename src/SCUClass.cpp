@@ -1,19 +1,17 @@
 /*
-* Name: Alex Green
-* Email: aigreen@scu.edu
-* Student ID: 1643872
-* Contact: 9252854240
+* Name: Alex Green, Kieran Pazmino, Charlie Gray
+* Email: aigreen@scu.edu, kpazmino@scu.edu, cjgray@scu.edu
 *
 * Assignment: Create a container representing the students
-*             in a class via a linked list implementation
-*             that can add, remove, traverse, and print.
-* 6 of 6: SCUClass.cpp
+*             in a class via a vector that can add, remove,
+*             traverse, and print.
+* 4 of 4: SCUClass.cpp
 */
 
 #include <iostream>
+#include <vector>
 
 #include "Student.h"
-#include "Node.h"
 #include "SCUClass.h"
 
 #include <new>
@@ -22,73 +20,54 @@ using namespace std;
 
 namespace coen79
 {
-	SCUClass::SCUClass(void) : students{nullptr}
+	SCUClass::SCUClass(void) : students{}
 	{
 
-	}
-
-	SCUClass::~SCUClass(void)
-	{
-		delete this->students;
 	}
 
 	int SCUClass::insert(const Student& student)
 	{
-		Node* newNode{new (nothrow) Node{}};
-
-		if(!newNode)
-		{
-			cout << "Failed to allocate new Node." << endl;
-			return -1;
-		}
-
-		newNode->setNext(this->students);
-		newNode->assign(student);
-		this->students = newNode;
+		this->students.push_back(student);
 		return 0;
 	}
 
 	void SCUClass::remove(const Student& student)
 	{
-		if(this->students->retrieve() == student)
+		for(int i{0}; i < this->students.size(); ++i)
 		{
-			Node* newFirst{this->students->getNext()};
-			this->students->setNext(nullptr);
-			delete this->students;
-			this->students = newFirst;
-		}
-
-		for(Node* node{this->students}; node->getNext(); node = node->getNext())
-		{
-			Node* next{node->getNext()};
-
-			if(next->retrieve() == student)
+			if(this->students[i] == student)
 			{
-				node->setNext(next->getNext());
-				next->setNext(nullptr);
-				delete next;
+				this->students.erase(this->students.begin() + i);
 				return;
 			}
 		}
 	}
 
-	void SCUClass::traverse(int (*process)(const int, Student&, void*), void* pointer)
+	void SCUClass::list(void) const
 	{
-		Node* cursor{this->students};
-		int i{0};
-
-		while(cursor)
+		for(const Student& student : this->students)
 		{
-			process(i++, cursor->retrieve(), pointer);
-			cursor = cursor->getNext();
+			cout << student << endl;
 		}
 	}
 
-	void SCUClass::list(void) const
+	vector<Student>::iterator SCUClass::begin(void)
 	{
-		for(Node* node{this->students}; node; node = node->getNext())
-		{
-			cout << node->retrieve() << endl;
-		}
+		return this->students.begin();
+	}
+
+	vector<const Student>::iterator SCUClass::cbegin(void)
+	{
+		return this->students.cbegin();
+	}
+
+	vector<Student>::iterator SCUClass::end(void)
+	{
+		return this->students.end();
+	}
+
+	vector<const Student>::iterator SCUClass::cend(void)
+	{
+		return this->students.cend();
 	}
 }

@@ -2,7 +2,6 @@
 #include <fstream>
 
 #include "Student.h"
-#include "Node.h"
 #include "SCUClass.h"
 
 using namespace std;

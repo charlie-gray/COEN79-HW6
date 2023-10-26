@@ -1,13 +1,11 @@
 /*
-* Name: Alex Green
-* Email: aigreen@scu.edu
-* Student ID: 1643872
-* Contact: 9252854240
+* Name: Alex Green, Kieran Pazmino, Charlie Gray
+* Email: aigreen@scu.edu, kpazmino@scu.edu, cjgray@scu.edu
 *
 * Assignment: Create a container representing the students
-*             in a class via a linked list implementation
-*             that can add, remove, traverse, and print.
-* 2 of 6: Student.cpp
+*             in a class via a vector that can add, remove,
+*             traverse, and print.
+* 2 of 4: Student.cpp
 */
 
 #include <iostream>
