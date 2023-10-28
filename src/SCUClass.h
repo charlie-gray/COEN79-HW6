@@ -21,7 +21,7 @@ namespace coen79
 		SCUClass(void);
 
 		int insert(const Student& student);
-		void remove(const Student& student);
+		void remove(const int studentID);
 		void list(void) const;
 		std::vector<Student>::iterator begin(void);
 		std::vector<const Student>::iterator cbegin(void);

@@ -31,11 +31,11 @@ namespace coen79
 		return 0;
 	}
 
-	void SCUClass::remove(const Student& student)
+	void SCUClass::remove(const int studentID)
 	{
 		for(int i{0}; i < this->students.size(); ++i)
 		{
-			if(this->students[i] == student)
+			if(this->students[i].getID() == studentID)
 			{
 				this->students.erase(this->students.begin() + i);
 				return;

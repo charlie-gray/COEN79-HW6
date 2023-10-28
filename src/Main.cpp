@@ -9,7 +9,7 @@ using namespace coen79;
 
 int main(void)
 {
-	ifstream dataFile{"scuclass.test"};
+	ifstream dataFile{"TestStudentData.txt"};
 
 	if(!dataFile.is_open())
 	{
@@ -32,9 +32,9 @@ int main(void)
 			cout << "Adding Student: " << name << " with id " << id << endl;
 			break;
 		case 'X':
-			dataFile >> id >> name;
-			theClass.remove(Student{id, name});
-			cout << "Removing Student: " << name << " with id " << id << endl;
+			dataFile >> id;
+			theClass.remove(id);
+			cout << "Removing Student with ID: " << id << endl;
 			break;
 		case 'L':
 			theClass.list();
